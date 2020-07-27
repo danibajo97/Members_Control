@@ -1,0 +1,374 @@
+{% load widget_tweaks %}
+
+<form method="post" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="modal-header">
+    <h3 class="modal-title" style="font-family:  Calibri;;">Editar Contacto</h3>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+  <div class="modal-body">
+    <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+      {% for error in form.non_field_errors %}
+        {{ error }}
+      {% endfor %}
+    </div>
+    <div class="row">
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label for="{{ form.nombre.id_for_label }}"><b>{{ form.nombre.label }}:</b></label>
+          {% render_field form.nombre class="form-control" placeholder=form.nombre.label id="nombre" %}
+          <div class="{% if form.nombre.errors %} invalid{% endif %}">
+            {% for error in form.nombre.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label for="{{ form.primer_apellido.id_for_label }}"><b>{{ form.primer_apellido.label }}:</b></label>
+          {% render_field form.primer_apellido class="form-control" placeholder=form.primer_apellido.label %}
+          <div class="{% if form.primer_apellido.errors %} invalid{% endif %}">
+            {% for error in form.primer_apellido.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label for="{{ form.segundo_apellido.id_for_label }}"><b>{{ form.segundo_apellido.label }}:</b></label>
+          {% render_field form.segundo_apellido class="form-control" placeholder=form.segundo_apellido.label %}
+          <div class="{% if form.segundo_apellido.errors %} invalid{% endif %}">
+            {% for error in form.segundo_apellido.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label for="{{ form.carnet_identidad.id_for_label }}"><b>{{ form.carnet_identidad.label }}:</b></label>
+          {% render_field form.carnet_identidad class="form-control" placeholder=form.carnet_identidad.label %}
+          <div class="{% if form.carnet_identidad.errors %} invalid{% endif %}">
+            {% for error in form.carnet_identidad.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label for="{{ form.calle.id_for_label }}"><b>{{ form.calle.label }}:</b></label>
+          {% render_field form.calle class="form-control" placeholder=form.calle.label %}
+          <div class="{% if form.calle.errors %} invalid{% endif %}">
+            {% for error in form.calle.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label for="{{ form.numero_casa.id_for_label }}"><b>{{ form.numero_casa.label }}:</b></label>
+          {% render_field form.numero_casa class="form-control" placeholder=form.numero_casa.label %}
+          <div class="{% if form.numero_casa.errors %} invalid{% endif %}">
+            {% for error in form.numero_casa.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label for="{{ form.entre_calle_primera.id_for_label }}"><b>{{ form.entre_calle_primera.label }}:</b></label>
+          {% render_field form.entre_calle_primera class="form-control" placeholder=form.entre_calle_primera.label %}
+          <div class="{% if form.entre_calle_primera.errors %} invalid{% endif %}">
+            {% for error in form.entre_calle_primera.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label for="{{ form.entre_calle_segunda.id_for_label }}"><b>{{ form.entre_calle_segunda.label }}:</b></label>
+          {% render_field form.entre_calle_segunda class="form-control" placeholder=form.entre_calle_segunda.label %}
+          <div class="{% if form.entre_calle_segunda.errors %} invalid{% endif %}">
+            {% for error in form.entre_calle_segunda.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label for="{{ form.edificio.id_for_label }}"><b>{{ form.edificio.label }}:</b></label>
+          {% render_field form.edificio class="form-control" placeholder=form.edificio.label %}
+          <div class="{% if form.edificio.errors %} invalid{% endif %}">
+            {% for error in form.edificio.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label for="{{ form.reparto.id_for_label }}"><b>{{ form.reparto.label }}:</b></label>
+          {% render_field form.reparto class="form-control" placeholder=form.reparto.label %}
+          <div class="{% if form.reparto.errors %} invalid{% endif %}">
+            {% for error in form.reparto.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label><b>Número fijo:</b></label>
+          {% render_field form.numero_fijo class="form-control" placeholder=form.numero_fijo.label %}
+          <div class="{% if form.numero_fijo.errors %} invalid{% endif %}">
+            {% for error in form.numero_fijo.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label><b>Número celular:</b></label>
+          {% render_field form.numero_celular class="form-control" placeholder=form.numero_celular.label %}
+          <div class="{% if form.numero_celular.errors %} invalid{% endif %}">
+            {% for error in form.numero_celular.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label><b>Número vecino:</b></label>
+          {% render_field form.numero_vecino class="form-control" placeholder=form.numero_vecino.label %}
+          <div class="{% if form.numero_vecino.errors %} invalid{% endif %}">
+            {% for error in form.numero_vecino.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label><b>Número trabajo:</b></label>
+          {% render_field form.numero_trabajo class="form-control" placeholder=form.numero_trabajo.label %}
+          <div class="{% if form.numero_trabajo.errors %} invalid{% endif %}">
+            {% for error in form.numero_trabajo.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label><b>{{ form.correo.label }}:</b></label>
+          {% render_field form.correo class="form-control" placeholder=form.correo.label %}
+          <div class="{% if form.correo.errors %} invalid{% endif %}">
+            {% for error in form.correo.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label><b>{{ form.foto.label }}:</b></label>
+          {% render_field form.foto class="form-control-file border" placeholder=form.foto.label %}
+          <div class="{% if form.foto.errors %} invalid{% endif %}">
+            {% for error in form.foto.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label><b>Fecha bautizo:</b></label>
+          {% render_field form.fecha_bautiso class="form-control" placeholder=form.fecha_bautiso.label %}
+          <div class="{% if form.fecha_bautiso.errors %} invalid{% endif %}">
+            {% for error in form.fecha_bautiso.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label><b>Local bautizo:</b></label>
+          {% render_field form.local_bautiso class="form-control" placeholder=form.local_bautiso.label %}
+          <div class="{% if form.local_bautiso.errors %} invalid{% endif %}">
+            {% for error in form.local_bautiso.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="w3-container col-sm-3 form" >
+        <div class="form-group">
+          <label><b>Nombre del pastor:</b></label>
+          {% render_field form.nombre_pastor_bautiso class="form-control" placeholder=form.nombre_pastor_bautiso.label %}
+          <div class="{% if form.nombre_pastor_bautiso.errors %} invalid{% endif %}">
+            {% for error in form.nombre_pastor_bautiso.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6"> 
+        <div class="row">
+          <div class="w3-container col-sm-6 form" >
+            <div class="form-group">
+              <label><b>{{ form.fecha_ingreso.label }}:</b></label>
+              {% render_field form.fecha_ingreso class="form-control" placeholder=form.fecha_ingreso.label %}
+              <div class="{% if form.fecha_ingreso.errors %} invalid{% endif %}">
+                {% for error in form.fecha_ingreso.errors %}
+                  <h6 class="help-block" style="color:red">{{ error }}</h6>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="w3-container col-sm-6 form">
+            <div class="form-group">
+              <label><b>{{ form.ingresa_por.label }}:</b></label>
+              {% render_field form.ingresa_por class="form-control" placeholder=form.ingresa_por.label %}
+              <div class="{% if form.ingresa_por.errors %} invalid{% endif %}">
+                {% for error in form.ingresa_por.errors %}
+                  <h6 class="help-block" style="color:red">{{ error }}</h6>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">  
+          <div class="w3-container col-sm-6 form" >
+            <div class="form-group">
+              <label><b>Profesión:</b></label>
+              {% render_field form.profesion class="form-control" placeholder=form.profesion.label %}
+              <div class="{% if form.profesion.errors %} invalid{% endif %}">
+                {% for error in form.profesion.errors %}
+                  <h6 class="help-block" style="color:red">{{ error }}</h6>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="w3-container col-sm-6 form" >
+            <div class="form-group">
+              <label><b>Ocupación:</b></label>
+              {% render_field form.ocupacion class="form-control" placeholder=form.ocupacion.label %}
+              <div class="{% if form.ocupacion.errors %} invalid{% endif %}">
+                {% for error in form.ocupacion.errors %}
+                  <h6 class="help-block" style="color:red">{{ error }}</h6>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+      <div class="col-sm-6 ">
+        <div class="form-group">
+          <label><b>{{ form.comentario_extra.label }}:</b></label>
+          {% render_field form.comentario_extra class="form-control" rows="5" placeholder=form.comentario_extra.label %}
+          <div class="{% if form.comentario_extra.errors %} invalid{% endif %}">
+            {% for error in form.comentario_extra.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>  
+    </div>
+    <div class="row">
+      <div class="col-sm-6"> 
+        <div class="row">
+          <div class="w3-container col-sm-6 form" >
+            <div class="form-group">
+              <label><b>{{ form.fecha_baja.label }}:</b></label>
+              {% render_field form.fecha_baja class="form-control" placeholder=form.fecha_baja.label %}
+              <div class="{% if form.fecha_baja.errors %} invalid{% endif %}">
+                {% for error in form.fecha_baja.errors %}
+                  <h6 class="help-block" style="color:red">{{ error }}</h6>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="w3-container col-sm-6 form">
+            <div class="form-group">
+              <label><b>{{ form.baja_por.label }}:</b></label>
+              {% render_field form.baja_por class="form-control" placeholder=form.baja_por.label %}
+              <div class="{% if form.baja_por.errors %} invalid{% endif %}">
+                {% for error in form.baja_por.errors %}
+                  <h6 class="help-block" style="color:red">{{ error }}</h6>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">  
+          <div class="w3-container col-sm-6 form" >
+            <div class="form-group">
+              <label><b>{{ form.fecha_reingreso.label }}:</b></label>
+              {% render_field form.fecha_reingreso class="form-control" placeholder=form.fecha_reingreso.label %}
+              <div class="{% if form.fecha_reingreso.errors %} invalid{% endif %}">
+                {% for error in form.fecha_reingreso.errors %}
+                  <h6 class="help-block" style="color:red">{{ error }}</h6>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+      <div class="col-sm-6 ">
+        <div class="form-group">
+          <label><b>{{ form.comentario_reingreso.label }}:</b></label>
+          {% render_field form.comentario_reingreso class="form-control" rows="5" placeholder=form.comentario_reingreso.label %}
+          <div class="{% if form.comentario_reingreso.errors %} invalid{% endif %}">
+            {% for error in form.comentario_reingreso.errors %}
+              <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>        
+  <div class="modal-footer">
+    <button type="button" class="submit-btn btn btn-secondary">Actualizar</button>
+  </div>
+</form>
+{% block extrascripts %}
+    <script type="text/javascript">
+        $('input').keydown( function (event) { //event==Keyevent
+          if(event.which == 13) {
+            var inputs = $(this).closest('form').find(':input:visible');
+            inputs.eq( inputs.index(this)+ 1 ).focus();
+            event.preventDefault(); //Disable standard Enterkey action
+          }
+       // event.preventDefault(); <- Disable all keys  action
+        });
+
+        $('#create-modal').on('shown.bs.modal', function() {
+          $('#nombre').focus();
+        })
+    </script>
+{% endblock extrascripts %}

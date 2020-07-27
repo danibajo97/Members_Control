@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+   <title>Importar</title>
+{% endblock title %}
+{% block content %}
+{% include "_modal.html" %}
+<div class="container mt-3">
+    <h3 class="text-center">
+       <b style="font-family:  Calibri;;">Importar Datos</b>
+    </h3>
+    <br>
+    <div class="col-12 mb-3">
+        <form method="post" enctype="multipart/form-data" class="form-group row">
+            {% csrf_token %}
+            <div class="col-xs-4">
+                <input type="file" name="importData">
+                <select name="file-format" class="form-control my-3">
+                    <option selected>CSV</option>
+                    <option>JSON</option>
+                </select>
+                <button class="import-button btn btn-primary"   type="submit"><span class="fa fa-download"></span> Importar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

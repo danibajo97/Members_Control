@@ -1,0 +1,47 @@
+{% if contact_list %}
+    <table class="w3-table-all w3-hoverable" style="width:100%" id="contact-table">
+        <thead>
+            <tr class="w3-blue">
+                <th class="text-center" onclick="sortTableNumber()" scope="col">#</th>
+                <th class="text-center" onclick="sortTableNames(1)" scope="col">Nombre</th>
+                <th class="text-center" onclick="sortTableNames(2)" scope="col">1er Apellido</th>
+                <th class="text-center" onclick="sortTableNames(3)" scope="col">2do Apellido</th>
+                <th class="text-center" onclick="sortTableNames(4)" scope="col">Carnet de Identidad</th>
+                {% if request.user.is_staff %}
+                    <th class="text-center" scope="col">Detalles / Editar / Borrar / Baja</th>
+                {% else %}
+                    <th class="text-center" scope="col">Detalles</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody id="contact-info">
+            {% for contact in contact_list %}
+                <tr>
+                    <td class="text-center"><b>{{ forloop.counter }}</b></td>
+                    <td class="text-center">{{ contact.nombre }}</td>
+                    <td class="text-center">{{ contact.primer_apellido }}</td>
+                    <td class="text-center">{{ contact.segundo_apellido }}</td>
+                    <td class="text-center">{{ contact.carnet_identidad }}</td>
+                    <td class="text-center">
+                        <button type="button" class="detail-contact btn btn-sm btn-primary w3-tiny rounded-circle" data-id="{% url 'Contact_Web:DetailContact' contact.pk %}" data-toggle="tooltip" data-placement="top" title="Detalles">
+                            <span class="fa fa-eye"></span>
+                        </button>
+                        {% if request.user.is_staff %}
+                            <button type="button" class="update-contact btn btn-sm btn-secondary w3-tiny rounded-circle" data-id="{% url 'Contact_Web:UpdateContact' contact.pk %}" data-toggle="tooltip" data-placement="top" title="Editar">
+                                <span class="fa fa-pencil"></span>
+                            </button>
+                            <button type="button" class="delete-contact btn btn-sm btn-danger w3-tiny rounded-circle" data-id="{% url 'Contact_Web:DeleteContact' contact.pk %}" data-toggle="tooltip" data-placement="top" title="Borrar">
+                                <span class="fa fa-trash"></span>
+                            </button>
+                            <button type="button" class="baja-contact btn btn-sm btn-warning w3-tiny rounded-circle" data-id="{% url 'Contact_Web:CreateContactBaja' contact.pk %}" data-toggle="tooltip" data-placement="top" title="Dar de Baja">
+                                <span class="fa fa-exclamation-triangle"></span>
+                            </button>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="text-primary text-center">No hay contactos.</p>
+{% endif %}

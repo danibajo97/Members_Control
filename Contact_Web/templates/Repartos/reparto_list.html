@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+ <!--Estilos Tablas-->
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css_tables/dataTables.bootstrap4.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css_tables/dataTables.bootstrap4.min.css' %}" />
+{% endblock extracss %}
+{% block title %}
+   <title>Listado Repartos</title>
+{% endblock title %}
+{% block content %}
+{% include "_modal.html" %}
+<div class="mt-3 table-responsive">
+        <div class="col">
+            <div class="row w3-margin-bottom">
+          <div class="col-sm-4">
+              {% if request.user.is_staff %}
+                  <button class="create-reparto btn btn-primary btn-md" type="button" name="button" style="font-size:20px;cursor:pointer">
+                  <span class="fa fa-plus" ></span></button>
+                  <button class="delete-all-reparto btn btn-md btn-danger" type="button" style="font-size:20px;cursor:pointer">
+                  <span class="fa fa-trash "></span></button>
+              {% endif %}
+          </div>
+          <div class="col-sm-4">
+              <h3 class="text-center" style="font-family: Calibri;">
+                  <b>Listado de Repartos</b>
+              </h3>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mb-3 w3-responsive">
+              {% include "Repartos/table_reparto.html" with reparto_list=reparto_list%}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extrascripts %}
+  <script type="text/javascript">
+    $(function () {
+
+      // Create contact button
+      $(".create-reparto").modalForm({formURL: "{% url 'Contact_Web:CreateReparto' %}", modalID: "#modal"});
+
+      // Delete All Contact buttons
+      $(".delete-all-reparto").modalForm({formURL: "{% url 'Contact_Web:DeleteAllReparto' %}", modalID: "#all-modal"});
+
+
+      // Update Contact buttons
+      $(".update-reparto").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      // Detail Contact buttons
+      $(".detail-reparto").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      });
+
+      // Delete Contact buttons
+      $(".delete-reparto").each(function () {
+        $(this).modalForm({formURL: $(this).data('id')});
+      })
+
+      // Hide message
+      $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert").slideUp(500);
+      });
+
+    });
+
+    $(document).ready(function() {
+      $('#reparto-table').DataTable();
+  } );
+</script>
+<script src="{% static 'assets/js_tables/datatables.min.js' %}"></script>
+<script src="{% static 'assets/js_tables/datatables.js' %}"></script>
+<script src="{% static 'assets/js_tables/datatables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'assets/js_tables/datatables.bootstrap4.js' %}"></script>
+{% endblock extrascripts %}

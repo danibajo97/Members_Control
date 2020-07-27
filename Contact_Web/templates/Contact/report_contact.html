@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include "_modal.html" %}
+<div class="w3-container w3-margin mt-3">
+    <div class="container-fluid">
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="row ">
+                        <div class="col-sm-6">
+                            <h5 class="text-center w3-margin-bottom" style="font-family:  Calibri;;"><b>Crear Reporte por:</b></h5>
+                            <br>
+                            <b>Por Reparto:</b>
+                            <select name="reparto" class="form-control my-3">
+                                <option selected>--------</option>
+                                {% for reparto in reparto %}
+                                    <option>{{reparto.nombre_reparto}}</option>
+                                {% endfor %}
+                            </select>
+                            <b>Por Fecha de Nacimiento:</b>
+                            <select name="cumpleanos" class="form-control my-3">
+                                <option selected>--------</option>
+                                <option>Nuevos a Viejos</option>
+                                <option>Viejos a Nuevos</option>
+                            </select>
+                            <b>Por Fecha de Ingreso a la Iglesia:</b>
+                            <select name="ingreso" class="form-control my-3">
+                                <option selected>--------</option>
+                                <option>Nuevos a Viejos</option>
+                                <option>Viejos a Nuevos</option>
+                            </select>
+                            <b>Por Fecha de Bautismo:</b>
+                            <select name="bautismo" class="form-control my-3">
+                                <option selected>--------</option>
+                                <option>Nuevos a Viejos</option>
+                                <option>Viejos a Nuevos</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5 class="text-center w3-margin-bottom" style="font-family:  Calibri;;"><b>Filtrar el Reporte por:</b></h5>
+                            <br>
+                            <b>Por orden Alfabético:</b>
+                            <select name="orden" class="form-control my-3">
+                                <option selected>A-Z</option>
+                                <option>Z-A</option>
+                            </select>
+                            <b>Por sexo:</b>
+                            <select name="sexo" class="form-control my-3">
+                                <option selected>Cualquiera</option>
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                            </select>
+                            <b>Por grupo de edad:</b>
+                            <select name="edad" class="form-control my-3">
+                                <option selected>Cualquiera</option>
+                                <option>Ancianos (65 - adelante)</option>
+                                <option>Adultos (47 - 59)</option>
+                                <option>Adultos Jovenes (35 - 46)</option>
+                                <option>Jovenes Adultos (24 - 34)</option>
+                                <option>Jovenes (15 - 24)</option>
+                                <option>Juveniles (13 - 15)</option>
+                                <option>Primarios (8 - 12)</option>
+                            </select>
+                            <br>
+                            <button class="btn btn-outline-dark w3-margin-top btn-block" type="submit"><span class="fa fa-file-pdf-o"></span><b> Reporte</b></button>
+                        </div>
+                </div>
+            </form>
+    </div>
+</div>
+{% endblock content %}

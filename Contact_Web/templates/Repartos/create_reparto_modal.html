@@ -1,0 +1,72 @@
+{% load widget_tweaks %}
+
+<form method="post" action="">
+  {% csrf_token %}
+
+  <div class="modal-header">
+    <h3 class="modal-title" style="font-family:  Calibri;;">Crear Reparto</h3>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+      {% for error in form.non_field_errors %}
+        {{ error }}
+      {% endfor %}
+    </div>
+
+    <div class="form-group">
+         <label for="{{ form.nombre_reparto.id_for_label }}"><b>{{ form.nombre_reparto.label }}:</b></label>
+         {% render_field form.nombre_reparto class="form-control" placeholder=form.nombre_reparto.label %}
+         <div class="{% if form.nombre_reparto.errors %} invalid{% endif %}">
+            {% for error in form.nombre_reparto.errors %}
+               <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+         </div>
+    </div>
+    <div class="form-group">
+         <label for="{{ form.codigo_postal.id_for_label }}"><b>{{ form.codigo_postal.label }}:</b></label>
+         {% render_field form.codigo_postal class="form-control" placeholder=form.codigo_postal.label %}
+         <div class="{% if form.codigo_postal.errors %} invalid{% endif %}">
+            {% for error in form.codigo_postal.errors %}
+               <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+         </div>
+    </div>
+    <div class="form-group">
+         <label for="{{ form.ciudad.id_for_label }}"><b>{{ form.ciudad.label }}:</b></label>
+         {% render_field form.ciudad class="form-control" placeholder=form.ciudad.label %}
+         <div class="{% if form.ciudad.errors %} invalid{% endif %}">
+            {% for error in form.ciudad.errors %}
+               <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+         </div>
+    </div>
+    <div class="form-group">
+         <label for="{{ form.municipio.id_for_label }}"><b>{{ form.municipio.label }}:</b></label>
+         {% render_field form.municipio class="form-control" placeholder=form.municipio.label %}
+         <div class="{% if form.municipio.errors %} invalid{% endif %}">
+            {% for error in form.municipio.errors %}
+               <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+         </div>
+    </div>
+    <div class="form-check-inline">
+         <label class="form-check-label" for="{{ form.es_reparto.id_for_label }}"><b>Es Reparto:</b></label>
+         {% render_field form.es_reparto class="form-check-input" type="checkbox" placeholder=form.es_reparto.label %}
+         <div class="{% if form.es_reparto.errors %} invalid{% endif %}">
+            {% for error in form.es_reparto.errors %}
+               <h6 class="help-block" style="color:red">{{ error }}</h6>
+            {% endfor %}
+         </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="submit-btn btn btn-primary">Crear</button>
+  </div>
+
+</form>

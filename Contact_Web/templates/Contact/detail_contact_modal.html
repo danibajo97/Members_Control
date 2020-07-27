@@ -1,0 +1,211 @@
+{% load widget_tweaks %}
+{% block extracss %}
+<style>
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+</style>
+{% endblock extracss %}
+<div class="modal-header">
+  <h3 class="modal-title" style="font-family:  Calibri;;">Detalles de {{contact.contact.nombre}}</h3>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-8">
+              <div class="">
+                <b>Nombre:</b>
+                {{ contact.contact.nombre }}
+              </div>
+              <div class="">
+                <b>Primer Apellido:</b>
+                {{ contact.contact.primer_apellido }}
+              </div>
+              {% if contact.contact.segundo_apellido %}
+              <div class="">
+                <b>Segundo Apellido:</b>
+                {{ contact.contact.segundo_apellido }}
+              </div>
+              {% endif %}
+              <div class="">
+              <b>Carnet de Identidad:</b>
+                {{ contact.contact.carnet_identidad }}
+              </div>
+              <div class="">
+              <b>Fecha de Nacimiento:</b>
+                {{ contact.contact.fecha_nacimiento }}
+              </div>
+              <div class="">
+              <b>Edad:</b>
+                {{ contact.age }}
+              </div>
+              <div class="">
+              <b>Sexo:</b>
+                {{ contact.sex }}
+              </div>
+              {% if contact.contact.numero_fijo %}
+              <div class="">
+              <b>Número Fijo:</b>
+                {{ contact.contact.numero_fijo }}
+              </div>
+              {% endif %}
+              {% if contact.contact.numero_vecino %}
+              <div class="">
+              <b>Número Vecino:</b>
+                {{ contact.contact.numero_vecino }}
+              </div>
+              {% endif %}
+              {% if contact.contact.numero_celular %}
+              <div class="">
+              <b>Número Celular:</b>
+                {{ contact.contact.numero_celular }}
+              </div>
+              {% endif %}
+              {% if contact.contact.numero_trabajo %}
+              <div class="">
+              <b>Número Trabajo:</b>
+                {{ contact.contact.numero_trabajo }}
+              </div>
+              {% endif %}
+              {% if contact.contact.correo %}
+              <div class="">
+              <b>Correo:</b>
+                {{ contact.contact.correo }}
+              </div>
+              {% endif %}
+              {% if contact.contact.reparto %}
+              <div class="">
+              <b>Reparto:</b>
+                {{ contact.contact.reparto }}
+              </div>
+              {% endif %}
+              {% if contact.contact.numero_casa %}
+              <div class="">
+              <b>Número Casa:</b>
+                {{ contact.contact.numero_casa }}
+              </div>
+              {% endif %}
+              {% if contact.contact.edificio %}
+              <div class="">
+              <b>Edificio:</b>
+                {{ contact.contact.edificio }}
+              </div>
+              {% endif %}
+              {% if contact.contact.calle %}
+              <div class="">
+              <b>Calle:</b>
+                {{ contact.contact.calle }}
+              </div>
+              {% endif %}
+              {% if contact.contact.entre_calle_primera %}
+              <div class="">
+              <b>Entre Calle 1ra:</b>
+                {{ contact.contact.entre_calle_primera }}
+              </div>
+              {% endif %}
+              {% if contact.contact.entre_calle_segunda %}
+              <div class="">
+              <b>Entre Calle 2da:</b>
+                {{ contact.contact.entre_calle_segunda }}
+              </div>
+              {% endif %}
+              {% if contact.contact.fecha_bautiso %}
+              <div class="">
+              <b>Fecha Bautizo:</b>
+                {{ contact.contact.fecha_bautiso }}
+              </div>
+              {%endif %}
+              {% if contact.contact.local_bautiso %}
+              <div class="">
+              <b>Local Bautizo:</b>
+                {{ contact.contact.local_bautiso }}
+              </div>
+              {% endif %}
+              {% if contact.contact.nombre_pastor_bautiso %}
+              <div class="">
+              <b>Nombre del Pastor:</b>
+                {{ contact.contact.nombre_pastor_bautiso }}
+              </div>
+              {% endif %}
+              {% if contact.contact.ingresa_por %}
+              <div class="">
+              <b>Ingresa Por:</b>
+                {{ contact.contact.ingresa_por }}
+              </div>
+              {% endif %}
+              {% if contact.contact.fecha_ingreso %}
+              <div class="">
+              <b>Fecha de Ingreso:</b>
+                {{ contact.contact.fecha_ingreso }}
+              </div>
+              {% endif %}
+              {% if contact.contact.fecha_reingreso %}
+              <div class="">
+              <b>Fecha Reingreso:</b>
+                {{ contact.contact.fecha_reingreso }}
+              </div>
+              {% endif %}
+              {% if contact.contact.profesion %}
+              <div class="">
+              <b>Profesión:</b>
+                {{ contact.contact.profesion }}
+              </div>
+              {% endif %}
+              {% if contact.contact.ocupacion %}
+              <div class="">
+              <b>Ocupación:</b>
+                {{ contact.contact.ocupacion }}
+              </div>
+              {% endif %}
+              {% if contact.contact.comentario_extra %}
+              <div class="">
+              <b>Comentario Extra:</b>
+                {{ contact.contact.comentario_extra }}
+              </div>
+              {% endif %}
+              {% if contact.contact.fecha_reingreso %}
+              <div class="">
+              <b>Fecha Reingreso:</b>
+                {{ contact.contact.fecha_reingreso }}
+              </div>
+              {% endif %}
+              {% if contact.contact.comentario_reingreso %}
+              <div class="">
+              <b>Comentario Reingreso:</b>
+                {{ contact.contact.comentario_reingreso }}
+              </div>
+              {% endif %}
+              {% if contact.contact.baja_por %}
+              <div class="">
+              <b>Baja Por:</b>
+                {{ contact.contact.baja_por }}
+              </div>
+              {% endif %}
+              {% if contact.contact.fecha_baja %}
+              <div class="">
+              <b>Fecha Baja:</b>
+                {{ contact.contact.fecha_baja }}
+              </div>
+              {% endif %}
+              <div class="">
+              <b>Fecha de Creación:</b>
+                {{ contact.contact.fecha_creacion_contacto }}
+              </div>
+        </div>
+        <div class="col-sm-4">
+            {% if contact.contact.foto %}
+                <div class="imgcontainer">
+                    <img src="{{ contact.contact.foto.url }}" class="img-thumbnail" width="150" height="150">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+</div>

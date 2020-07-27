@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+   <title>Home</title>
+{% endblock title %}
+{% block content %}
+{% include "_modal.html" %}
+<div class="w3-row-padding w3-margin-bottom">
+   <div class="w3-quarter">
+      <div class="w3-container w3-blue w3-padding-16">
+      <div class="w3-left"><i class="fa fa-user-plus w3-xxxlarge"></i></div>
+      <br>
+      <div class="w3-right">
+         <h3>{{all_contact}}</h3>
+      </div>
+      <div class="w3-clear"></div>
+      <h4 class="w3-center">Cantidad de miembros</h4>
+      </div>
+   </div>
+   <div class="w3-quarter">
+      <div class="w3-container w3-red w3-padding-16">
+      <div class="w3-left"><i class="fa fa-user-times w3-xxxlarge"></i></div>
+      <br>
+      <div class="w3-right">
+         <h3>{{all_bajas}}</h3>
+      </div>
+      <div class="w3-clear"></div>
+      <h4 class="w3-center">Cantidad de bajas</h4>
+      </div>
+   </div>
+   <div class="w3-quarter">
+      <div class="w3-container w3-teal w3-padding-16">
+      <div class="w3-left"><i class="fa fa-map-signs w3-xxxlarge"></i></div>
+      <br>
+      <div class="w3-right">
+         <h3>{{all_repartos}}</h3>
+      </div>
+      <div class="w3-clear"></div>
+      <h4 class="w3-center">Cantidad de Repartos</h4>
+      </div>
+   </div>
+</div>
+{% endblock content %}
+{% block extrascripts %}
+   <script type="text/javascript">
+       $(function () {
+           // Hide message
+         $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+         $(".alert").slideUp(500);
+         });
+
+       });
+   </script>
+{% endblock extrascripts %}

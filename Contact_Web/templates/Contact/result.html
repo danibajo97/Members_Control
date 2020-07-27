@@ -1,0 +1,30 @@
+{% if contact_list %}
+    <table class="w3-table-all w3-hoverable" style="width:100%" id="contact-table">
+        <thead>
+            <tr class="w3-teal">
+                <th class="text-center" onclick="sortTableNumber()" scope="col">#</th>
+                <th class="text-center" onclick="sortTableNames(1)" scope="col">Nombre</th>
+                <th class="text-center" onclick="sortTableNames(2)" scope="col">1er Apellido</th>
+                <th class="text-center" onclick="sortTableNames(3)" scope="col">2do Apellido</th>
+                <th class="text-center" scope="col">Detalles</th>
+            </tr>
+        </thead>
+        <tbody id="contact-info">
+            {% for contact in contact_list %}
+                <tr>
+                    <td class="text-center">{{ contact.pk }}</td>
+                    <td class="text-center" >{{ contact.nombre }}</td>
+                    <td class="text-center">{{ contact.primer_apellido }}</td>
+                    <td class="text-center">{{ contact.segundo_apellido }}</td>
+                    <td class="text-center">
+                       <button type="button" class="detail-contact btn btn-sm btn-primary w3-tiny rounded-circle" data-id="{% url 'Contact_Web:DetailContact' contact.pk %}" data-toggle="tooltip" data-placement="top" title="Detalles">
+                            <span class="fa fa-eye"></span>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="no-contact text-primary w3-center">No existen coincidencias.</p>
+{% endif %}

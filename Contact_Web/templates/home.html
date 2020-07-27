@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/css/w3pro.css' %}" />
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/css/mycss.css' %}" />
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/css/w3mobile.css' %}" />
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/css/w3.css' %}" />
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/css/w3-theme-black.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/css/dark.css' %}" />
+            <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+            <!-- Font awesome CSS -->
+            <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+            <!-- Custom CSS -->
+            <style media="screen">
+                body{
+                    background-image: url({% static 'media/Background/home.JPG' %});
+                    background-attachment: fixed;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                .login-btn {
+                display: inline-block;
+                border-radius: 4px;
+                background-color: black;
+                border: none;
+                color: rgb(255, 255, 255);
+                text-align: center;
+                font-size: 20px;
+                padding: 10px;
+                width: 200px;
+                transition: all 0.5s;
+                cursor: pointer;
+                } 
+             
+            </style>
+        {% endblock stylesheets %}
+        {% block extracss %}{% endblock extracss %}
+        {% block title %}
+            <title>Home</title>
+        {% endblock title %}
+    </head>
+    <body>
+            {% block content %}
+                {% include "_modal.html" %}
+                <div class="w3-display-topright w3-margin"><a href="/admin/" class="btn btn-outline-dark" style="cursor:pointer;" ><span class="fa fa-user-secret" style="font-size:25px"  data-toggle="tooltip" data-placement="top" title="Django Admin"></span></a></div>
+                <div class="w3-center">
+                    <div class="w3-display-middle">
+                        <h2 class="w3-xxxlarge w3-animate-opacity" style="font-size:5vw; text-shadow: 5px 5px 1px grey; font-family: Forte; Color:black">Control de Miembros</h2>
+                        <button class="login-btn btn btn-secondary w3-animate-opacity" type="button" name="button" style="cursor:pointer; border-radius: 25px; vertical-align:middle;
+                        border: 2px solid white;">
+                        <span class="fa fa-key"></span><b> LOGIN</b></button>
+                    </div>
+                </div>
+            {% endblock content %}
+        {% block scripts %}
+            <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+            <script src="{% static 'assets/js/popper.min.js' %}"></script>
+            <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+            <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+            <script src="{% static 'contact/js/myjs.js' %}"></script>
+        {% endblock scripts %}
+        {% block extrascripts %}
+            <script type="text/javascript">
+                $(function () {
+
+                  $(".login-btn").modalForm({formURL: "{% url 'Contact_Web:login' %}"});
+
+                });
+            </script>
+        {% endblock extrascripts %}
+    </body>
+</html>

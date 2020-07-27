@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+   <title>Exportar</title>
+{% endblock title %}
+{% block content %}
+{% include "_modal.html" %}
+<div class="container mt-3">
+    <h3 class="text-center">
+       <b style="font-family:  Calibri;;">Exportar Datos</b>
+    </h3>
+    <br>
+    <div class="col-12 mb-3">
+        <form method="post" enctype="multipart/form-data" class="form-group row">
+            {% csrf_token %}
+            <div class="col-xs-4">
+                <h6>Por Favor seleccione el formato para exportar</h6>
+                <select name="file-format" class="form-control my-3">
+                    <option selected>CSV</option>
+                    <option>JSON</option>
+                    <option>XLS (Excel)</option>
+                </select>
+                <button class="btn btn-success" type="submit"><span class="fa fa-upload"></span> Exportar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

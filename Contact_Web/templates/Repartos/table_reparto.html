@@ -1,0 +1,44 @@
+{% if reparto_list %}
+                <table class="w3-table-all w3-hoverable" style="width:100%" id="reparto-table">
+                    <thead>
+                        <tr class="w3-green">
+                            <th class="text-center" onclick="sortTableNumber()" scope="col">#</th>
+                            <th class="text-center" onclick="sortTableNames(1)" scope="col">Nombre</th>
+                            <th class="text-center" onclick="sortTableNames(2)" scope="col">Municipio</th>
+                            <th class="text-center" onclick="sortTableNames(3)" scope="col">Ciudad</th>
+                            <th class="text-center" scope="col">Código Postal</th>
+                            {% if request.user.is_staff %}
+                                <th class="text-center" scope="col">Detalles / Editar / Borrar</th>
+                            {% else %}
+                                <th class="text-center" scope="col">Detalles</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody id="reparto-info">
+                        {% for reparto in reparto_list %}
+                        <tr>
+                            <td class="text-center"><b>{{ reparto.pk }}</b></td>
+                            <td class="text-center" >{{ reparto.nombre_reparto }}</td>
+                            <td class="text-center">{{ reparto.municipio }}</td>
+                            <td class="text-center">{{ reparto.ciudad }}</td>
+                            <td class="text-center">{{ reparto.codigo_postal }}</td>
+                            <td class="text-center">
+                                <button type="button" class="detail-reparto btn btn-sm btn-primary rounded-circle w3-tiny" data-id="{% url 'Contact_Web:DetailReparto' reparto.pk %}">
+                                    <span class="fa fa-eye"></span>
+                                </button>
+                                {% if request.user.is_staff %}
+                                    <button type="button" class="update-reparto btn btn-sm btn-secondary rounded-circle w3-tiny" data-id="{% url 'Contact_Web:UpdateReparto' reparto.pk %}">
+                                        <span class="fa fa-pencil"></span>
+                                    </button>
+                                    <button type="button" class="delete-reparto btn btn-sm btn-danger rounded-circle w3-tiny" data-id="{% url 'Contact_Web:DeleteReparto' reparto.pk %}">
+                                        <span class="fa fa-trash"></span>
+                                    </button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <p class="no-contact text-primary w3-center">No hay repartos.</p>
+                {% endif %}
